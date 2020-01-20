@@ -3,4 +3,4 @@ A Miltown Game Developers group project
 
 ## Technologies
 
-- [Unity 2018.2.2f2](unityhub://2018.2.2f1/c18cef34cbcd)
+- [Unity 2018.2.2f2](https://unity3d.com/get-unity/download/archive)
