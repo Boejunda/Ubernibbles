@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="$PROJECT_DIR$" t="IncludeRecursive">
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Scripts" t="Include">
+          <e p="TestScript.cs" t="Include" />
+        </e>
+        <e p="Ubernibbles" t="Include">
+          <e p="Source" t="Include">
+            <e p="CapturePath.cs" t="Include" />
+            <e p="DrawFreeLines.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Vectrosity" t="Include">
+          <e p="Demos" t="Include">
+            <e p="Scripts" t="Include">
+              <e p="_Simple2DLine" t="Include">
+                <e p="Line.cs" t="Include" />
+                <e p="ReallyBasicLine.cs" t="Include" />
+                <e p="UniformTexturedLine.cs" t="Include" />
+              </e>
+              <e p="_Simple3DObject" t="Include">
+                <e p="Simple3D.cs" t="Include" />
+                <e p="Simple3D2.cs" t="Include" />
+                <e p="Simple3D3.cs" t="Include" />
+              </e>
+              <e p="Curve" t="Include">
+                <e p="CurvePointControl.cs" t="Include" />
+                <e p="DrawCurve.cs" t="Include" />
+                <e p="SimpleCurve.cs" t="Include" />
+              </e>
+              <e p="DrawLines" t="Include">
+                <e p="DrawLines.cs" t="Include" />
+                <e p="DrawLinesMouse.cs" t="Include" />
+                <e p="DrawLinesTouch.cs" t="Include" />
+              </e>
+              <e p="Ellipse" t="Include">
+                <e p="Ellipse1.cs" t="Include" />
+                <e p="Ellipse2.cs" t="Include" />
+              </e>
+              <e p="EndCap" t="Include">
+                <e p="EndCapDemo.cs" t="Include" />
+              </e>
+              <e p="Grid" t="Include">
+                <e p="DrawGrid.cs" t="Include" />
+              </e>
+              <e p="Grid3D" t="Include">
+                <e p="Grid3D.cs" t="Include" />
+              </e>
+              <e p="Highlight" t="Include">
+                <e p="Highlight.cs" t="Include" />
+                <e p="MakeSpheres.cs" t="Include" />
+                <e p="RotateAroundY.cs" t="Include" />
+              </e>
+              <e p="Mask" t="Include">
+                <e p="MaskLine1.cs" t="Include" />
+                <e p="MaskLine2.cs" t="Include" />
+              </e>
+              <e p="Orbit" t="Include">
+                <e p="CreateStars.cs" t="Include" />
+                <e p="Orbit.cs" t="Include" />
+                <e p="RotateViewpoint.cs" t="Include" />
+              </e>
+              <e p="PartialLine" t="Include">
+                <e p="AnimatePartialLine.cs" t="Include" />
+              </e>
+              <e p="Path" t="Include">
+                <e p="DrawPath.cs" t="Include" />
+              </e>
+              <e p="Points" t="Include">
+                <e p="DrawPoints.cs" t="Include" />
+              </e>
+              <e p="PowerBar" t="Include">
+                <e p="PowerBar.cs" t="Include" />
+              </e>
+              <e p="RandomHills" t="Include">
+                <e p="CreateHills.cs" t="Include" />
+              </e>
+              <e p="Scribblecube" t="Include">
+                <e p="CameraZoom.cs" t="Include" />
+                <e p="ScribbleCube.cs" t="Include" />
+              </e>
+              <e p="SelectionBox" t="Include">
+                <e p="SelectionBox.cs" t="Include" />
+                <e p="SelectionBox2.cs" t="Include" />
+              </e>
+              <e p="SelectLine" t="Include">
+                <e p="SelectLine.cs" t="Include" />
+              </e>
+              <e p="Spline" t="Include">
+                <e p="MakeSpline.cs" t="Include" />
+              </e>
+              <e p="SplineFollow" t="Include">
+                <e p="SplineFollow2D.cs" t="Include" />
+                <e p="SplineFollow3D.cs" t="Include" />
+              </e>
+              <e p="Text" t="Include">
+                <e p="TextDemo.cs" t="Include" />
+              </e>
+              <e p="Xray" t="Include">
+                <e p="DrawBox.cs" t="Include" />
+                <e p="VectorObject.cs" t="Include" />
+                <e p="XrayLineData.cs" t="Include" />
+              </e>
+            </e>
+            <e p="Shaders" t="Include">
+              <e p="DepthMask.shader" t="Include" />
+              <e p="SolidColor.shader" t="Include" />
+            </e>
+          </e>
+          <e p="Plugins" t="Include">
+            <e p="VectrosityDemos" t="Include">
+              <e p="ImageEffects" t="Include">
+                <e p="Scripts" t="Include">
+                  <e p="BloomOptimized.cs" t="Include" />
+                  <e p="PostEffectsBase.cs" t="Include" />
+                </e>
+                <e p="Shaders" t="Include">
+                  <e p="_BloomAndFlares" t="Include">
+                    <e p="MobileBloom.shader" t="Include" />
+                  </e>
+                </e>
+              </e>
+            </e>
+          </e>
+          <e p="Vectrosity Documentation" t="Include">
+            <e p="Vectrosity changelog.txt" t="Include" />
+            <e p="Vectrosity5 Upgrade Guide.txt" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="Library" t="ExcludeRecursive" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Temp" t="ExcludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+      </e>
+      <e p="Ubernibbles.sln" t="IncludeFlat" />
+    </e>
+    <e p="$USER_HOME$/Library/Caches/Rider2018.1/resharper-host/local/Transient/ReSharperHost/v12/SolutionCaches/_Ubernibbles.-827089650.00" t="ExcludeRecursive" />
+  </component>
+</project>
