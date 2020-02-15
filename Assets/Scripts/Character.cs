@@ -36,6 +36,9 @@ public class Character {
 		_characterWaitObject = theCharWaitObject;
 	}
 
+	public GameObject GetCharWaitObject() {
+		return _characterWaitObject;
+	}
 
 	public Direction? GetNextInput() {
 		if (_inputQueue.Count > 0) {

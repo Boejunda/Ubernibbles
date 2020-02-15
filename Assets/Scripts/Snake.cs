@@ -6,6 +6,8 @@ using DG.Tweening;
 //the character's actions being played out on the grid
 public class Snake : MonoBehaviour {
 
+	private Transform _trans;
+
 	private List<Character> _controllingCharacters;
 
 	private List<Vector2Int> _snakeSpaces; //spaces occupied by the snake
@@ -20,6 +22,7 @@ public class Snake : MonoBehaviour {
 
 
 	private void Awake() {
+		_trans = transform;
 		_controllingCharacters = new List<Character>(6);
 
 		_snakeSpaces = new List<Vector2Int>(32);
@@ -109,11 +112,13 @@ public class Snake : MonoBehaviour {
 		}
 	}
 
-	public void DemolishSnake() {	
+	public void DemolishSnake() {
 		GameObject deadSnakePfb = Resources.Load(_snakeDeadPfbString) as GameObject;
 
 		for (int i = 0; i < _visualSnakePieces.Count; i++) {
-			Destroy(Instantiate(deadSnakePfb, _visualSnakePieces[i].transform.position, Quaternion.identity), 0.5f);
+			if (_visualSnakePieces[i] != null) {
+				Destroy(Instantiate(deadSnakePfb, _visualSnakePieces[i].transform.position, Quaternion.identity), 0.5f);
+			}
 		}
 		_visualSnakePieces.Clear();
 		Destroy(gameObject);

@@ -149,6 +149,13 @@ public class GameLogic {
 		return _grid;
 	}
 
+	public void CharacterLeftMatch(Character theChar) {
+		Snake snake = null;
+		if (_charToSnake.TryGetValue(theChar, out snake)) {
+			_snakesToDemolish.Add(snake);
+		}
+	}
+
 
 	public void RegisterCharControlsSnake(Character theChar, Snake theSnake) {
 		_charToSnake.Add(theChar, theSnake);

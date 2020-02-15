@@ -6,7 +6,7 @@ using DG.Tweening;
 
 public class GameState_Victory : GameState {
 
-	private GameState _gameState_Inputting;
+	private GameState _gameState_SetupNewRound;
 
 	[SerializeField] private TMP_Text _resultText;
 	[SerializeField] private TMP_Text _pathLengthText;
@@ -18,7 +18,7 @@ public class GameState_Victory : GameState {
 
 
 	private void Awake() {
-		_gameState_Inputting = GetComponent<GameState_Inputting>();
+		_gameState_SetupNewRound = GetComponent<GameState_SetupNewRound>();
 	}
 
 	public override void StartState(List<Character> theCharacters, Queue<inputData> theInputQueue) {
@@ -27,10 +27,11 @@ public class GameState_Victory : GameState {
 		_resultText.gameObject.SetActive(true);
 		_pathLengthText.gameObject.SetActive(true);
 
-		//figure out who, if anyone, won
-		GameLogic game = GameController.instance.gameLogic;
 
-		List<Snake> aliveSnakes = game.GetAliveSnakes();
+		//figure out who, if anyone, won
+		GameLogic gameLogic = GameController.instance.gameLogic;
+
+		List<Snake> aliveSnakes = gameLogic.GetAliveSnakes();
 
 		if (aliveSnakes.Count > 0) {
 			_countdown = durationWhenHaveVictor;
@@ -42,6 +43,7 @@ public class GameState_Victory : GameState {
 					longestPath = aliveSnakeLength;
 				}
 			}
+
 
 			int numWinningSnakes = 0;
 			for (int i = 0; i < aliveSnakes.Count; i++) {
@@ -65,6 +67,7 @@ public class GameState_Victory : GameState {
 			_pathLengthText.gameObject.SetActive(false);
 		}
 
+
 	}
 
 	public override GameState UpdateState(List<Character> theCharacters, Queue<inputData> theInputQueue) {
@@ -74,8 +77,9 @@ public class GameState_Victory : GameState {
 			_resultText.gameObject.SetActive(false);
 			_pathLengthText.gameObject.SetActive(false);
 			GameController.instance.gameLogic.Reset();
-			return _gameState_Inputting;
+			return _gameState_SetupNewRound;
 		}
+
 
 		return null; //don't change state
 	}

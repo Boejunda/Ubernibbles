@@ -13,12 +13,8 @@ public class GameState_Inputting : GameState {
 	[SerializeField] private TMP_Text _countDownText;
 	private Transform _countDownTrans;
 
-	private const int _inputDuration = 12;
+	private const int _inputDuration = 4;
 	private bool _goToNextState;
-
-	private int _roundNum;
-
-	[SerializeField] private GameObject _snakePfb;
 
 
 	private void Awake() {
@@ -29,45 +25,17 @@ public class GameState_Inputting : GameState {
 	public override void StartState(List<Character> theCharacters, Queue<inputData> theInputQueue) {
 		_goToNextState = false;
 
-		GameLogic game = GameController.instance.gameLogic;
-
 		theInputQueue.Clear();
-
-		bool charsGotNewStartingSpace = false;
-
-		_roundNum++;
-		if (_roundNum % 3 == 0) {
-			charsGotNewStartingSpace = true;
-			//characters get new starting spaces?
-			game.ResetAvailableSpace();
-			for (int i = 0; i < theCharacters.Count; i++) {
-				theCharacters[i].SetStartingSpace(game.ReserveAStartingSpace(), game.GetGrid());
-			}
+		for (int i = 0; i < theCharacters.Count; i++) {
+			theCharacters[i].ClearInputQueue();
 		}
 
-		StartCoroutine(Coordinator(charsGotNewStartingSpace, theCharacters, game));
+		StartCoroutine(Coordinator());
 
 	}
 
-	IEnumerator Coordinator(bool theCharsGotNewStartingSpaces, List<Character> theCharacters, GameLogic theGame) {
-
-		if (theCharsGotNewStartingSpaces) {
-			yield return new WaitForSeconds(2f);
-		}
-
-		for (int i = 0; i < theCharacters.Count; i++) {
-			Character aChar = theCharacters[i];
-			aChar.ClearInputQueue();
-
-			Snake snake = Instantiate(_snakePfb, Vector3.zero, Quaternion.identity).GetComponent<Snake>();
-			snake.AddControllingCharacter(aChar);
-			theGame.RegisterCharControlsSnake(aChar, snake);
-			theGame.PlaceNewSnake(snake, aChar.GetStartingSpace());
-		}
-
-
+	IEnumerator Coordinator() {
 		//do whatever intro animation here then...
-		//
 
 		_inputText.gameObject.SetActive(true);
 		_countDownText.gameObject.SetActive(true);
@@ -100,6 +68,8 @@ public class GameState_Inputting : GameState {
 
 			charDoingInput.QueueAnInput(anInputData.direction);
 
+			//maybe make the snake shine or pop a bit too to show receiving the input
+			//  and serving as another indicator of player starting position
 			charDoingInput.DisplayEnterInput();
 		}
 

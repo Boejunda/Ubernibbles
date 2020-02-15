@@ -11,7 +11,7 @@ public class GameController : MonoBehaviour {
 
 
 	private GameState _currentGameState;
-	[SerializeField] private GameState _startingState; //GameState_Inputting...
+	[SerializeField] private GameState _startingState; //GameState_SetupNewRound
 
 	[SerializeField] private Camera _camera;
 
@@ -76,6 +76,8 @@ public class GameController : MonoBehaviour {
 	}
 
 	public void RemoveCharacter(Character theCharToRemove) {
+		Destroy(theCharToRemove.GetCharWaitObject());
+		gameLogic.CharacterLeftMatch(theCharToRemove);
 		_characters.Remove(theCharToRemove);
 
 		if (onCharacterRemoved != null) {

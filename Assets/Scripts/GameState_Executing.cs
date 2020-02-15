@@ -6,6 +6,7 @@ using DG.Tweening;
 
 public class GameState_Executing : GameState {
 
+	private GameState _gameState_Inputting;
 	private GameState _gameState_Victory;
 
 	[SerializeField] private TMP_Text _executingText;
@@ -17,6 +18,7 @@ public class GameState_Executing : GameState {
 
 
 	private void Awake() {
+		_gameState_Inputting = GetComponent<GameState_Inputting>();
 		_gameState_Victory = GetComponent<GameState_Victory>();
 		_executingTextTrans = _executingText.GetComponent<Transform>();
 
@@ -39,18 +41,21 @@ public class GameState_Executing : GameState {
 
 		GameLogic game = GameController.instance.gameLogic;
 
-		bool gameStillInProgress = true;
+		bool executingStillInProgress = true;
 
+		bool performedTick = false;
 		while (_timer > _durationTillNextTick) {
 			//execute 1 step of the move queue in a character
-			gameStillInProgress = false;
+			executingStillInProgress = false;
+
+			performedTick = true;
 
 			for (int i = 0; i < theCharacters.Count; i++) {
 				Direction? nextInput = theCharacters[i].GetNextInput();
 				if (nextInput.HasValue) {
 					bool movedGameForward = game.ExecuteInput(theCharacters[i], nextInput.Value);
 					if (movedGameForward) {
-						gameStillInProgress = true;
+						executingStillInProgress = true;
 					}
 				}
 			}
@@ -61,17 +66,27 @@ public class GameState_Executing : GameState {
 			}
 
 			_timer -= _durationTillNextTick;
-			_durationTillNextTick = Mathf.Max(0.1f, _durationTillNextTick - 0.01f); //speed up the ticks over the first # of moves
+			_durationTillNextTick = Mathf.Max(0.4f, _durationTillNextTick - 0.03f); //speed up the ticks over the first # of moves
 		}
 
 		//could maybe use the inputQueue to shine/shake the corresponding snake (another way for the player to figure out who they are...)
 
-		if (gameStillInProgress) {
-			return null;
-		} else {
-			_executingText.gameObject.SetActive(false);
-			return _gameState_Victory;
+		if (performedTick) {
+			if (GameController.instance.gameLogic.GetAliveSnakes().Count <= 1) {
+				_executingText.gameObject.SetActive(false);
+				return _gameState_Victory;
+			} else {
+				if (executingStillInProgress == false) {
+					_executingText.gameObject.SetActive(false);
+					return _gameState_Inputting;
+				} else {
+					return null;
+				}
+			}
 		}
+
+		return null;
+
 	}
 
 
